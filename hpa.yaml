@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    app: react-ui
+    env: prod
+spec:
+  maxReplicas: 10
+  minReplicas: 4
+  scaleTargetRef:
+    apiVersion: extensions/v1
+    kind: Deployment
+    name: react-ui
+  targetCPUUtilizationPercentage: 50
